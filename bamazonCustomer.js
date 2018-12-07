@@ -52,3 +52,53 @@ showItemsTable();
 // The app should then prompt users with two messages.
 // 1.The first should ask them the ID of the product they would like to buy.
 // 2.The second message should ask how many units of the product they would like to buy.
+function askItemID() {
+    inquirer.prompt([
+        {
+            name: "buy",
+            type: "input",
+            message: "What's the item_ID (look in the table) of the product would you like to buy? [Press Ctrl+C to Quit]",
+        },
+        {
+            name: "quantity",
+            type: "input",
+            message: "How many units of ther product would you like to buy?"
+        }])
+        .then(function (answer) {
+            // set a query to select the item the user has chosen
+            var query = "SELECT item_id, stock_quantity, price FROM products WHERE ?";
+            connection.query(query, { item_id: answer.buy }, function (err, res) {
+                console.log(chalk.yellow("USER ANSWER"), res);
+                var inputQuantity = answer.quantity;
+                checkStock(res[0].stock_quantity, inputQuantity, res[0].price.toFixed(2), res[0].item_ID);    
+            });
+        })
+}
+// check if your store has enough of the product to meet the customer's request.
+function checkStock(on_stock, buy_quantity, price, item_id) {
+    if (on_stock >= buy_quantity) {
+        console.log(chalk.blue("Quantity: ", buy_quantity));
+        console.log(chalk.blue("Price: " + "$" + price));
+        var totalPrice = buy_quantity * price;
+    
+        console.log(chalk.magenta.bold("Your total amount is: " + "$$" + totalPrice + "\n" + "Thank you for your purchase on BAMAZON!" + "\n"));
+        updateStock(buy_quantity, item_id);
+        // If not, the app should log a phrase like Insufficient quantity!, and then prevent the order from going through.
+    } else {
+        console.log(chalk.red("Insufficient quantity!" + "\n" + "Only ${on_stock} items on stock."));
+        connection.end();
+    }
+}
+
+//  updating the SQL database to reflect the remaining quantity.
+function updateStock(quantity, item_id) {
+    var query = "UPDATE products SET stock_quantity = stock_quantity - ? WHERE ?";
+    connection.query(query, [quantity, { item_id: item_id }],
+        function (err) {
+            if (err) throw err;
+            console.log("DB was succesfully Updated!");
+            connection.end();
+        });
+}
+
+
