@@ -34,7 +34,7 @@ function showItemsTable() {
             // column names
             head: ["Item ID", "Product Name", "Deparment Name", "Price", "Quantity Available"],
             // Setting the width of each colums
-            colWidths: [10, 30, 20, 20, 20]
+            colWidths: [15, 35, 35, 20, 20]
         });
         var item_IDs = [];
         for (var i = 0; i < res.length; i++) {
@@ -42,7 +42,9 @@ function showItemsTable() {
                 [res[i].item_id, res[i].product_name, res[i].department_name, "$" + res[i].price, res[i].stock_quantity]
             );
         }
-        console.log(chalk.yellow.bold("DISPLAY TABLE") + "\n", table.toString());
+        console.log(chalk.yellow.bold("DISPLAY TABLE"));
+        console.log(table.toString());
+        
         askItemID(item_IDs);
     })
 }
