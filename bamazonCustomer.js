@@ -85,7 +85,7 @@ function checkStock(on_stock, buy_quantity, price, item_id) {
         updateStock(buy_quantity, item_id);
         // If not, the app should log a phrase like Insufficient quantity!, and then prevent the order from going through.
     } else {
-        console.log(chalk.red("Insufficient quantity!" + "\n" + "Only ${on_stock} items on stock."));
+        console.log(chalk.red("Insufficient quantity! Sorry!" + "\n" + "ONLY " + on_stock + " items on stock!"));
         connection.end();
     }
 }
@@ -93,10 +93,14 @@ function checkStock(on_stock, buy_quantity, price, item_id) {
 //  updating the SQL database to reflect the remaining quantity.
 function updateStock(quantity, item_id) {
     var query = "UPDATE products SET stock_quantity = stock_quantity - ? WHERE ?";
+    
     connection.query(query, [quantity, { item_id: item_id }],
-        function (err) {
+        function (err, res) {
             if (err) throw err;
-            console.log("DB was succesfully Updated!");
+            console.log(res.affectedRows + " products updated!\n");
+            
+            console.log("ERROR", err);
+            // showItemsTable();
             connection.end();
         });
 }
