@@ -55,7 +55,7 @@ function menuOption() {
             break;
             
             case "Add to Inventory":
-            viewItemsForSale(addToInventory);
+            addInventory();
             break;
             
             case "Add new Product":
@@ -113,4 +113,35 @@ function viewLowInventory(){
 }
 
 // If a manager selects Add to Inventory, your app should display a prompt that will let the manager "add more" of any item currently in the store.
+function addInventory(){
+    connection.query("SELECT * FROM products", function(err,res){
+        if (err) throw err;
+        var table = new Table({
+            head: ["Item ID", "Product Name", "Deparment Name", "Price", "Quantity Available"],
+            // Setting the width of each colums
+            colWidths: [15, 35, 35, 20, 20],
+        });
+        for (var i = 0; i < res.length; i++){
+            table.push(
+                [res[i].item_id, res[i].product_name, res[i].department_name, "$" + res[i].price, res[i].stock_quantity]
+            );
+        }
+        console.log(table.toString());
+        inquirer.prompt([
+            {
+                name: "item_number",
+                type: "number",
+                message: "Which product would you like to add to? (item_id)"
+            },
+            {
+                name: "how_many?",
+                type: "number",
+                message: "How many more would you like to add?"
+            },
+        ]).then(function(user){
+            var newQuantityAdd = 
+        })
+    })
+}
+
 // If a manager selects Add New Product, it should allow the manager to add a completely new product to the store.

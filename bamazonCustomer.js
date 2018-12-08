@@ -34,7 +34,7 @@ function showItemsTable() {
             // column names
             head: ["Item ID", "Product Name", "Deparment Name", "Price", "Quantity Available"],
             // Setting the width of each colums
-            colWidths: [15, 35, 35, 20, 20]
+            colWidths: [15, 35, 35, 20, 20],
         });
         var item_IDs = [];
         for (var i = 0; i < res.length; i++) {
@@ -72,19 +72,20 @@ function askItemID() {
             connection.query(query, { item_id: answer.buy }, function (err, res) {
                 console.log(chalk.yellow("USER ANSWER"), res);
                 var inputQuantity = answer.quantity;
-                checkStock(res[0].stock_quantity, inputQuantity, res[0].price.toFixed(2), res[0].item_ID);    
+                var choosenItem = res[0];  
+                checkStock(res[0].stock_quantity, inputQuantity, res[0].price.toFixed(2), res[0].item_ID, choosenItem);  
             });
         })
 }
 // check if your store has enough of the product to meet the customer's request.
-function checkStock(on_stock, buy_quantity, price, item_id) {
+function checkStock(on_stock, buy_quantity, price, item_id, choosenItem) {
     if (on_stock >= buy_quantity) {
         console.log(chalk.blue("Quantity: ", buy_quantity));
         console.log(chalk.blue("Price: " + "$" + price));
         var totalPrice = buy_quantity * price;
     
         console.log(chalk.magenta.bold("Your total amount is: " + "$$" + totalPrice + "\n" + "Thank you for your purchase on BAMAZON!" + "\n"));
-        updateStock(buy_quantity, item_id);
+        updateStock(buy_quantity, item_id, choosenItem);
         // If not, the app should log a phrase like Insufficient quantity!, and then prevent the order from going through.
     } else {
         console.log(chalk.red("Insufficient quantity! Sorry!" + "\n" + "ONLY " + on_stock + " items on stock!"));
@@ -93,10 +94,10 @@ function checkStock(on_stock, buy_quantity, price, item_id) {
 }
 
 //  updating the SQL database to reflect the remaining quantity.
-function updateStock(quantity, item_id) {
-    var query = "UPDATE products SET stock_quantity = stock_quantity - ? WHERE ?";
+function updateStock(quantity, item_id, choosenItem) {
+    var query = "UPDATE products SET stock_quantity = stock_quantity - ? WHERE item_id = ?";
     
-    connection.query(query, [quantity, { item_id: item_id }],
+    connection.query(query, [quantity, choosenItem.item_id ],
         function (err, res) {
             if (err) throw err;
             console.log(res.affectedRows + " products updated!\n");
