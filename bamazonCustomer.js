@@ -59,12 +59,12 @@ function askItemID() {
         {
             name: "buy",
             type: "input",
-            message: "What's the item_ID (look in the table) of the product would you like to buy? [Press Ctrl+C to Quit]",
+            message: chalk.yellow("What's the item_ID (look in the table) of the product would you like to buy?", chalk.cyan("[Press Ctrl+C to Quit]")),
         },
         {
             name: "quantity",
             type: "input",
-            message: "How many units of ther product would you like to buy?"
+            message: chalk.blue("How many units of ther product would you like to buy?")
         }])
         .then(function (answer) {
             // set a query to select the item the user has chosen
@@ -80,15 +80,17 @@ function askItemID() {
 // check if your store has enough of the product to meet the customer's request.
 function checkStock(on_stock, buy_quantity, price, item_id, choosenItem) {
     if (on_stock >= buy_quantity) {
-        console.log(chalk.blue("Quantity: ", buy_quantity));
+        console.log(chalk.blue("\nQuantity: ", buy_quantity));
         console.log(chalk.blue("Price: " + "$" + price));
         var totalPrice = buy_quantity * price;
     
-        console.log(chalk.magenta.bold("Your total amount is: " + "$$" + totalPrice + "\n" + "Thank you for your purchase on BAMAZON!" + "\n"));
+        console.log(chalk.magenta.bold("Your total amount is: " + "$$" + totalPrice + "\n"));
+        console.log(chalk.yellow.bgMagenta.bold("Thank you for your purchase on BAMAZON!" + "\n"));
+         
         updateStock(buy_quantity, item_id, choosenItem);
         // If not, the app should log a phrase like Insufficient quantity!, and then prevent the order from going through.
     } else {
-        console.log(chalk.red("Insufficient quantity! Sorry!" + "\n" + "ONLY " + on_stock + " items on stock!"));
+        console.log(chalk.red.bgYellow.bold("Insufficient quantity! Sorry!" + "\n" + "ONLY " + on_stock + " items on stock!"));
         connection.end();
     }
 }
@@ -100,9 +102,9 @@ function updateStock(quantity, item_id, choosenItem) {
     connection.query(query, [quantity, choosenItem.item_id ],
         function (err, res) {
             if (err) throw err;
-            console.log(res.affectedRows + " products updated!\n");
+            console.log(res.affectedRows + " Products updated!\n");
             
-            console.log("ERROR", err);
+            // console.log("ERROR", err);
             // showItemsTable();
             connection.end();
         });

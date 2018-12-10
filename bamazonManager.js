@@ -145,7 +145,7 @@ function addInventory() {
                 ], function (error, results) {
                     if (err) throw err;
 
-                    console.log(chalk.black.bgYellow("\nYOUR QUANTITY HAS BEEN UPDATED!\n"));
+                    console.log(chalk.black.bgYellow("\nYOUR QUANTITY HAS BEEN UPDATED!\n" + user));
                     menuOption();
                 });
         });
@@ -153,3 +153,42 @@ function addInventory() {
 }
 
 // If a manager selects Add New Product, it should allow the manager to add a completely new product to the store.
+function addNewItems() {
+    inquirer.prompt([
+        {
+            name: "productName",
+            type: "input",
+            message: "What is the product name?"
+        },
+        {
+            name: "departmentName",
+            type: "input",
+            message: "What the department is it in?"
+        },
+        {
+            name: "itemPrice",
+            type: "number",
+            message: "How much is it cost?"
+        },
+        {
+            name: "itemQuantity",
+            type: "number",
+            message: "How many do we have of this product?"
+        },
+    ]).then(function (user) {
+        connection.query("INSERT INTO products SET ?",
+            {
+                // when finished prompting, insert a new item into the db with that info
+                product_name: user.productName,
+                department_name: user.departmentName,
+                price: user.itemPrice,
+                stock_quantity: user.itemQuantity
+
+            }, function (err, res) {
+                if (err) throw err;
+            
+                console.log(chalk.green.bgBlack.bold("\n YOUR PRODUCT HAS BEEN ADDED! \n"));
+                menuOption();
+            });
+    });
+}
