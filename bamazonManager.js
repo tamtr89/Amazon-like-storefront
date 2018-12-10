@@ -22,14 +22,6 @@ connection.connect(function (err) {
     menuOption();   
 });
 
-
-// View Products for Sale
-// View Low Inventory
-// Add to Inventory
-// Add New Product
-
-
-
 function menuOption() {
     inquirer
     .prompt({
@@ -73,7 +65,7 @@ function viewItemsForSale() {
         var table = new Table({
             head: ["Item ID", "Product Name", "Deparment Name", "Price", "Quantity Available"],
             // Setting the width of each colums
-            colWidths: [15, 35, 35, 20, 20],
+            colWidths: [20, 35, 35, 25, 20],
         });
 
         for(var i = 0; i< res.length; i++){
@@ -93,7 +85,7 @@ function viewLowInventory(){
         var table = new Table({
             head: ["Item ID", "Product Name", "Deparment Name", "Price", "Quantity Available"],
             // Setting the width of each colums
-            colWidths: [15, 35, 35, 20, 20],
+            colWidths: [20, 35, 35, 25, 20],
         });
         for(var i = 0; i < res.length; i++){
             if(res[i].stock_quantity < 5){
@@ -119,7 +111,7 @@ function addInventory(){
         var table = new Table({
             head: ["Item ID", "Product Name", "Deparment Name", "Price", "Quantity Available"],
             // Setting the width of each colums
-            colWidths: [15, 35, 35, 20, 20],
+            colWidths: [20, 35, 35, 25, 20],
         });
         for (var i = 0; i < res.length; i++){
             table.push(
@@ -134,7 +126,7 @@ function addInventory(){
                 message: "Which product would you like to add to? (item_id)"
             },
             {
-                name: "how_many?",
+                name: "how_many",
                 type: "number",
                 message: "How many more would you like to add?"
             },

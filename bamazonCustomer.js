@@ -34,7 +34,7 @@ function showItemsTable() {
             // column names
             head: ["Item ID", "Product Name", "Deparment Name", "Price", "Quantity Available"],
             // Setting the width of each colums
-            colWidths: [15, 35, 35, 20, 20],
+            colWidths: [20, 35, 35, 25, 20],
         });
         var item_IDs = [];
         for (var i = 0; i < res.length; i++) {
