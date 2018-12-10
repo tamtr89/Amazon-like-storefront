@@ -18,16 +18,16 @@ CREATE TABLE products (
 
 -- Populate this database with around 10 different products. NORDSTROM STORE
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUE ("UGG Amie-Classic Slim", "Boots", 129.90, 9);
+VALUE ("UGG Amie-Classic Slim", "Boots", 129.90, 7);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUE ("Waterproof Hiker Boots ", "Boots", 189.90, 4);
+VALUE ("Waterproof Hiker Boots ", "Boots", 189.90, 2);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUE ("ML Leather backpack", "Handbags", 158.40, 10);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUE ("YSL Calfskin wallet", "Handbags", 1358.00, 7);
+VALUE ("YSL Calfskin wallet", "Handbags", 1358.00, 3);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUE ("Longchamp Hobo", "Handbags", 780.00, 9);
@@ -42,7 +42,7 @@ INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUE ("44mm TedBaker watch", "Jewelry", 175.00, 5);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUE ("DoubleX Ring", "Jewelry", 450.00, 8);
+VALUE ("DoubleX Ring", "Jewelry", 450.00, 6);
 
 INSERT INTO products (product_name, department_name, price, stock_quantity)
-VALUE ("BellaBot Charm", "Jewelry", 60.00, 6);
+VALUE ("BellaBot Charm", "Jewelry", 60.00, 2);
