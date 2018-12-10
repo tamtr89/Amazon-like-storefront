@@ -17,7 +17,7 @@ Amazon-like storefront with the MySQL skills you learned this unit. The app will
 <p>The first should ask them the ID of the product they would like to buy.
 <p>The second message should ask how many units of the product they would like to buy
 <img src="images/customerView.PNG" width="680px">
-<h3>Insufficient quantity!</h3>
+<h5>Insufficient quantity!</h5>
 <img src="images/notenoughstock.PNG" width="680px">
 <hr>
 
