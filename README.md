@@ -12,7 +12,7 @@ Amazon-like storefront with the MySQL skills you learned this unit. The app will
 <hr>
 
 
-<h4>Customer View</h4>
+<h1>Customer View</h1>
 <h3>Customer Purchase</h3>
 <p>The first should ask them the ID of the product they would like to buy.
 <p>The second message should ask how many units of the product they would like to buy
@@ -29,6 +29,7 @@ Amazon-like storefront with the MySQL skills you learned this unit. The app will
 
 <li>Javascript
 <li>Node.js (https://nodejs.org/en) - Framework used
+<li>MySQL WorkBench (https://www.mysql.com/products/workbench/) 
 <li>JSON (http://www.json.org) - Data format used
  
    * [mySQL](https://www.npmjs.com/package/mysql)
