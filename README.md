@@ -12,6 +12,11 @@ Amazon-like storefront with the MySQL skills you learned this unit. The app will
 <hr>
 
 
+
+### Demo:
+   * click for [Customer View](https://youtu.be/7sDIj82hYcE)
+  
+   
 <h1>Customer View</h1>
 <h3>Customer Purchase</h3>
 <p>The first should ask them the ID of the product they would like to buy.
