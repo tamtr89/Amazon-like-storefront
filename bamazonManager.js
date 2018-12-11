@@ -36,7 +36,7 @@ function menuOption() {
             ]
         })
         .then(function (answer) {
-            // console.log(chalk.red("ANSWER:" ,answer));
+            // console.log(chalk.red("ANSWER:" ,answer.action));
             switch (answer.action) {
                 case "View Products for Sale":
                     viewItemsForSale();
@@ -50,7 +50,7 @@ function menuOption() {
                     addInventory();
                     break;
 
-                case "Add new Product":
+                case "Add New Product":
                     addNewItems();
                     break;
             }
@@ -154,6 +154,7 @@ function addInventory() {
 
 // If a manager selects Add New Product, it should allow the manager to add a completely new product to the store.
 function addNewItems() {
+    // console.log("ADDING NEW...");
     inquirer.prompt([
         {
             name: "productName",
