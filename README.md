@@ -18,7 +18,7 @@ Amazon-like storefront with the MySQL skills you learned this unit. The app will
 <h1>Manager View</h1>
     * click for [Manager View](https://youtu.be/foAwiWnfRnQ)
 
-<h1>Customer View</h1>
+<h2>Customer View</h2>
    * click for [Customer View](https://youtu.be/jscFTkR7lCU)
 <h3>Customer Purchase</h3>
 <p>The first should ask them the ID of the product they would like to buy.
