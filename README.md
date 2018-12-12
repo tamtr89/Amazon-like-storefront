@@ -15,6 +15,8 @@ Amazon-like storefront with the MySQL skills you learned this unit. The app will
 
 ### Demo:
    * click for [Customer View](https://youtu.be/jscFTkR7lCU)
+<br>
+<h1>Manager View</h1>
     * click for [Manager View](https://youtu.be/foAwiWnfRnQ)
 
   
