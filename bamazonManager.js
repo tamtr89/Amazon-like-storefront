@@ -18,7 +18,7 @@ var connection = mysql.createConnection({
 // Connection with server
 connection.connect(function (err) {
     if (err) throw err;
-    console.log(chalk.yellow.bgMagenta("\nConnection as id: " + connection.threadId));
+    console.log(chalk.green.bgBlue.bold("\nConnection as id: " + connection.threadId));
     menuOption();
 });
 
@@ -27,12 +27,13 @@ function menuOption() {
         .prompt({
             name: "action",
             type: "list",
-            message: chalk.cyan.bgMagenta.bold("Please select a menu option? (Press Ctrl+C to exit) \n"),
+            message: chalk.cyan.bgMagenta.bold("Please select a menu option?\n"),
             choices: [
                 "View Products for Sale",
                 "View Low Inventory",
                 "Add to Inventory",
-                "Add New Product"
+                "Add New Product",
+                "Exit"
             ]
         })
         .then(function (answer) {
@@ -52,6 +53,10 @@ function menuOption() {
 
                 case "Add New Product":
                     addNewItems();
+                    break;
+
+                case "Exit":
+                    exit();
                     break;
             }
         });
@@ -192,4 +197,9 @@ function addNewItems() {
                 menuOption();
             });
     });
+}
+
+function exit(){
+    connection.end();
+    console.log(chalk.black.bgYellow.bold("======*****************THANK YOU for watching! Good Bye =)!!!*****************======"));  
 }
