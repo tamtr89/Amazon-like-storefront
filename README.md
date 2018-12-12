@@ -8,7 +8,7 @@ Amazon-like storefront with the MySQL skills you learned this unit. The app will
 
 <br>
 
-(https://tamtr89.github.io/Amazon-like-storefront/)
+
 <hr>
 
 
