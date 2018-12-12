@@ -14,12 +14,21 @@ Amazon-like storefront with the MySQL skills you learned this unit. The app will
 
 
 ### Demo:
-<br>
-<h1>Manager View</h1>
-    * click for [Manager View](https://youtu.be/foAwiWnfRnQ)
 
-<h2>Customer View</h2>
-   * click for [Customer View](https://youtu.be/jscFTkR7lCU)
+<h1>Manager View</h1>
+
+<img src="images/managerview.PNG" width="680px">
+
+***Click for
+[![Manager View]](https://youtu.be/foAwiWnfRnQ)
+
+<hr>
+
+<h1>Customer View</h1>
+
+***Click for
+[![Customer View]](https://youtu.be/jscFTkR7lCU)
+
 <h3>Customer Purchase</h3>
 <p>The first should ask them the ID of the product they would like to buy.
 <p>The second message should ask how many units of the product they would like to buy
@@ -30,8 +39,6 @@ Amazon-like storefront with the MySQL skills you learned this unit. The app will
 <img src="images/notenoughstock.PNG" width="680px">
 <hr>
 
-
-  
 <h3>Build with:</h3>
 <ul>
 
@@ -42,7 +49,7 @@ Amazon-like storefront with the MySQL skills you learned this unit. The app will
  
    * [mySQL](https://www.npmjs.com/package/mysql)
 
-   * [inquirer](https://www.npmjs.com/package/inquirer)
+   * [Inquirer](https://www.npmjs.com/package/inquirer)
 
    * [Table](https://www.npmjs.com/package/cli-table)
 
